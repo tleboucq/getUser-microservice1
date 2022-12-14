@@ -23,6 +23,7 @@ initializeApp({
 const db = getFirestore();
 
 const getUsers = async () => {
+  console.log("in getUser");
     const snapshot = await db.collection('users').get();
     let users = snapshot.docs.map(doc => doc.data());
     return users
@@ -34,6 +35,7 @@ app.get('/readiness', (req, res) => {
 
 
 app.get('/microservice1', (req, res) => {
+  console.log("in microservice1");
    getUsers().then((users) => {
       console.log(users);
       res.send(users);
