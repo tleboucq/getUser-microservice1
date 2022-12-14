@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice1
+  template:
+    metadata:
+      labels:
+        app: microservice1
+    spec:
+      serviceAccountName: microservice1
+      #nodeSelector:
+       # iam.gke.io/gke-metadata-server-enabled: "true"
+      containers:
+      - name: microservice1
+        image: my-app-image
+        resources:
+              requests:
+                cpu: "4000m"
+                memory: "4Gi"
+              limits:
+                memory: "4Gi"
+                cpu: "4000m"
+        ports:
+          - containerPort: 80
+        readinessProbe:
+          failureThreshold: 3
+         # initialDelaySeconds: 120
+          httpGet:
+            path: /readiness
+            port: 80
+            scheme: HTTP
