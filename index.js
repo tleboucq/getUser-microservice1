@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 80;
-//const Firestore = require('@google-cloud/firestore');
 var cors = require('cors');
 app.use(cors());
 app.options('*', cors());
@@ -13,12 +12,6 @@ const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestor
 initializeApp({
   credential: applicationDefault()
 });
-
-/* const serviceAccount = require('./serviceAccountKey.json');
-
-initializeApp({
-  credential: cert(serviceAccount)
-}); */
 
 const db = getFirestore();
 
