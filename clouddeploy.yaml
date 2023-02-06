@@ -16,4 +16,4 @@ metadata:
  name: qsprod
 description: production cluster
 gke:
- cluster: projects/gkemedium/locations/us-central1/clusters/cluster-1
+ cluster: projects/sandbox-decoupled-app/locations/us-central1/clusters/cluster-1
